@@ -1,30 +1,35 @@
 {
-    "microservices": [
+  "microservices": [
+    {
+      "name": "conference-ms",
+      "stack": "spring-boot",
+      "healthCheckPath": "/api/health"
+    }
+  ],
+  "microfrontends": [
+    {
+      "name": "table-mfe",
+      "customElement": "table-mfe",
+      "stack": "react",
+      "type": "widget",
+      "group": "free",
+      "publicFolder": "public",
+      "titles": {
+        "en": "table-mfe",
+        "it": "table-mfe"
+      },
+      "apiClaims": [
         {
-            "name": "conference-ms",
-            "stack": "spring-boot",
-            "healthCheckPath": "/api/health"
+          "name": "conference-api",
+          "type": "internal",
+          "serviceName": "conference-ms"
         }
-    ],
-    "microfrontends": [
-        {
-            "name": "table-mfe",
-            "customElement": "table-mfe",
-            "stack": "react",
-            "type": "widget",
-            "group": "free",
-            "publicFolder": "public",
-            "titles": {
-                "en": "table-mfe",
-                "it": "table-mfe"
-            }
-        }
-    ],
-    "svc": [
-        "keycloak"
-    ],
-    "name": "20220825-jh-v5",
-    "version": "0.0.1",
-    "description": "20220825-jh-v5 description",
-    "type": "bundle"
+      ]
+    }
+  ],
+  "svc": ["keycloak"],
+  "name": "20220825-jh-v5",
+  "version": "0.0.1",
+  "description": "20220825-jh-v5 description",
+  "type": "bundle"
 }

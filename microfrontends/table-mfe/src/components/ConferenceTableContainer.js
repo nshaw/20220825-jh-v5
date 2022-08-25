@@ -75,12 +75,18 @@ class ConferenceTableContainer extends Component {
   }
 
   dispatch(action, afterSetState = () => {}) {
-    this.setState((prevState) => reducer(prevState, action), afterSetState);
+    this.setState(prevState => reducer(prevState, action), afterSetState);
   }
 
   async fetchData() {
     const { filters, items } = this.state;
-    const { keycloak, paginationMode, pagination, serviceUrl } = this.props;
+    const { keycloak, paginationMode, pagination, config } = this.props;
+    const serviceUrl =
+      config &&
+      config.systemParams &&
+      config.systemParams.api &&
+      config.systemParams.api['conference-api'].url;
+
     const authenticated = keycloak.initialized && keycloak.authenticated;
 
     if (authenticated) {
@@ -150,7 +156,12 @@ class ConferenceTableContainer extends Component {
   }
 
   async handleDelete(item) {
-    const { t, onDelete, keycloak, serviceUrl } = this.props;
+    const { t, onDelete, keycloak, config } = this.props;
+    const serviceUrl =
+      config &&
+      config.systemParams &&
+      config.systemParams.api &&
+      config.systemParams.api['conference-api'].url;
     const authenticated = keycloak.initialized && keycloak.authenticated;
 
     if (authenticated) {
@@ -187,7 +198,7 @@ class ConferenceTableContainer extends Component {
     const Actions = ({ item }) =>
       onDelete ? (
         <ConfirmationDialogTrigger
-          onCloseDialog={(action) => this.handleConfirmationDialogAction(action, item)}
+          onCloseDialog={action => this.handleConfirmationDialogAction(action, item)}
           dialog={{
             title: t('entities.conference.deleteDialog.title'),
             description: t('entities.conference.deleteDialog.description'),

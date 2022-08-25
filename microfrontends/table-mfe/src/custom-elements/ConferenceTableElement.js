@@ -33,7 +33,7 @@ const ATTRIBUTES = {
   locale: 'locale',
   paginationMode: 'pagination-mode',
   disableDefaultEventHandler: 'disable-default-event-handler', // custom element attribute names MUST be written in kebab-case
-  serviceUrl: 'service-url',
+  config: 'config',
 };
 
 class ConferenceTableElement extends HTMLElement {
@@ -127,7 +127,7 @@ class ConferenceTableElement extends HTMLElement {
   }
 
   defaultWidgetEventHandler() {
-    return (evt) => {
+    return evt => {
       const action = widgetEventToFSA(evt);
       this.reactRootRef.current.dispatch(action);
     };
@@ -167,7 +167,8 @@ class ConferenceTableElement extends HTMLElement {
 
     const paginationMode = this.getAttribute(ATTRIBUTES.paginationMode) || '';
 
-    const serviceUrl = this.getAttribute(ATTRIBUTES.serviceUrl) || '';
+    const attributeConfig = this.getAttribute(ATTRIBUTES.config) || '';
+    const config = attributeConfig && JSON.parse(attributeConfig);
 
     ReactDOM.render(
       <KeycloakContext.Provider value={this.keycloak}>
@@ -181,7 +182,7 @@ class ConferenceTableElement extends HTMLElement {
                 onSelect={this.onSelect}
                 onError={this.onError}
                 paginationMode={paginationMode}
-                serviceUrl={serviceUrl}
+                config={config}
               />
             </PaginationProvider>
           </ThemeProvider>
@@ -192,4 +193,4 @@ class ConferenceTableElement extends HTMLElement {
   }
 }
 
-customElements.define('conference-table', ConferenceTableElement);
+customElements.define('table-mfe', ConferenceTableElement);
