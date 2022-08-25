@@ -45,7 +45,12 @@ class ConferenceEditFormContainer extends PureComponent {
   }
 
   async fetchData() {
-    const { keycloak, id, serviceUrl } = this.props;
+    const { keycloak, id, config } = this.props;
+    const serviceUrl =
+      config &&
+      config.systemParams &&
+      config.systemParams.api &&
+      config.systemParams.api['conference-api'].url;
     const authenticated = keycloak.initialized && keycloak.authenticated;
 
     if (authenticated && id) {
@@ -67,7 +72,12 @@ class ConferenceEditFormContainer extends PureComponent {
   }
 
   async handleSubmit(conference) {
-    const { t, onUpdate, keycloak, serviceUrl } = this.props;
+    const { t, onUpdate, keycloak, config } = this.props;
+    const serviceUrl =
+      config &&
+      config.systemParams &&
+      config.systemParams.api &&
+      config.systemParams.api['conference-api'].url;
     const authenticated = keycloak.initialized && keycloak.authenticated;
 
     if (authenticated) {
@@ -87,7 +97,12 @@ class ConferenceEditFormContainer extends PureComponent {
   }
 
   async handleDelete(conference) {
-    const { t, onDelete, keycloak, serviceUrl } = this.props;
+    const { t, onDelete, keycloak, config } = this.props;
+    const serviceUrl =
+      config &&
+      config.systemParams &&
+      config.systemParams.api &&
+      config.systemParams.api['conference-api'].url;
     const authenticated = keycloak.initialized && keycloak.authenticated;
 
     if (authenticated) {
@@ -157,7 +172,7 @@ ConferenceEditFormContainer.propTypes = {
   onDelete: PropTypes.func,
   t: PropTypes.func.isRequired,
   keycloak: keycloakType.isRequired,
-  serviceUrl: PropTypes.string,
+  config: PropTypes.string,
 };
 
 ConferenceEditFormContainer.defaultProps = {
@@ -165,7 +180,7 @@ ConferenceEditFormContainer.defaultProps = {
   onDelete: () => {},
   onUpdate: () => {},
   onError: () => {},
-  serviceUrl: '',
+  config: '',
 };
 
 export default withKeycloak(withTranslation()(ConferenceEditFormContainer));

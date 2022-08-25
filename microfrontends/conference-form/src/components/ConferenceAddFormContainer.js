@@ -29,7 +29,12 @@ class ConferenceAddFormContainer extends PureComponent {
   }
 
   async handleSubmit(conference) {
-    const { t, onCreate, keycloak, serviceUrl } = this.props;
+    const { t, onCreate, keycloak, config } = this.props;
+    const serviceUrl =
+      config &&
+      config.systemParams &&
+      config.systemParams.api &&
+      config.systemParams.api['conference-api'].url;
     const authenticated = keycloak.initialized && keycloak.authenticated;
 
     if (authenticated) {
@@ -83,14 +88,14 @@ ConferenceAddFormContainer.propTypes = {
   onCreate: PropTypes.func,
   t: PropTypes.func.isRequired,
   keycloak: keycloakType.isRequired,
-  serviceUrl: PropTypes.string,
+  config: PropTypes.string,
 };
 
 ConferenceAddFormContainer.defaultProps = {
   onError: () => {},
   onCancelEditing: () => {},
   onCreate: () => {},
-  serviceUrl: '',
+  config: {},
 };
 
 export default withKeycloak(withTranslation()(ConferenceAddFormContainer));

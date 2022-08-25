@@ -33,7 +33,7 @@ const ATTRIBUTES = {
   hidden: 'hidden',
   locale: 'locale',
   disableDefaultEventHandler: 'disable-default-event-handler', // custom element attribute names MUST be written in kebab-case
-  serviceUrl: 'service-url',
+  config: 'config',
 };
 
 class ConferenceFormElement extends HTMLElement {
@@ -130,7 +130,7 @@ class ConferenceFormElement extends HTMLElement {
   }
 
   defaultWidgetEventHandler() {
-    return (evt) => {
+    return evt => {
       const {
         tableAdd,
         cancelEditing,
@@ -196,7 +196,8 @@ class ConferenceFormElement extends HTMLElement {
   }
 
   render() {
-    const serviceUrl = this.getAttribute(ATTRIBUTES.serviceUrl) || '';
+    const attributeConfig = this.getAttribute(ATTRIBUTES.config) || '';
+    const config = attributeConfig && JSON.parse(attributeConfig);
 
     const hidden = this.getAttribute(ATTRIBUTES.hidden) === 'true';
     if (hidden) {
@@ -212,12 +213,12 @@ class ConferenceFormElement extends HTMLElement {
     const FormContainer = id
       ? React.createElement(
           ConferenceEditFormContainer,
-          { id, onUpdate: this.onUpdate, onError: this.onErrorUpdate, serviceUrl: serviceUrl },
+          { id, onUpdate: this.onUpdate, onError: this.onErrorUpdate, config: config },
           null
         )
       : React.createElement(
           ConferenceAddFormContainer,
-          { onCreate: this.onCreate, onError: this.onErrorCreate, serviceUrl: serviceUrl },
+          { onCreate: this.onCreate, onError: this.onErrorCreate, config: config },
           null
         );
 
