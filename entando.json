@@ -3,7 +3,7 @@
         {
             "name": "conference-ms",
             "stack": "spring-boot",
-            "healthCheckPath": "/api/health"
+            "healthCheckPath": "/management/health"
         }
     ],
     "microfrontends": [
@@ -50,7 +50,7 @@
         "keycloak"
     ],
     "name": "20220825-jh-v5",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "20220825-jh-v5 description",
     "type": "bundle"
 }
