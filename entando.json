@@ -1,35 +1,56 @@
 {
-  "microservices": [
-    {
-      "name": "conference-ms",
-      "stack": "spring-boot",
-      "healthCheckPath": "/api/health"
-    }
-  ],
-  "microfrontends": [
-    {
-      "name": "table-mfe",
-      "customElement": "table-mfe",
-      "stack": "react",
-      "type": "widget",
-      "group": "free",
-      "publicFolder": "public",
-      "titles": {
-        "en": "table-mfe",
-        "it": "table-mfe"
-      },
-      "apiClaims": [
+    "microservices": [
         {
-          "name": "conference-api",
-          "type": "internal",
-          "serviceName": "conference-ms"
+            "name": "conference-ms",
+            "stack": "spring-boot",
+            "healthCheckPath": "/api/health"
         }
-      ]
-    }
-  ],
-  "svc": ["keycloak"],
-  "name": "20220825-jh-v5",
-  "version": "0.0.1",
-  "description": "20220825-jh-v5 description",
-  "type": "bundle"
+    ],
+    "microfrontends": [
+        {
+            "name": "table-mfe",
+            "customElement": "table-mfe",
+            "stack": "react",
+            "type": "widget",
+            "group": "free",
+            "publicFolder": "public",
+            "titles": {
+                "en": "table-mfe",
+                "it": "table-mfe"
+            },
+            "apiClaims": [
+                {
+                    "name": "conference-api",
+                    "type": "internal",
+                    "serviceName": "conference-ms"
+                }
+            ]
+        },
+        {
+            "name": "conference-form",
+            "customElement": "conference-form",
+            "stack": "react",
+            "type": "widget",
+            "group": "free",
+            "publicFolder": "public",
+            "titles": {
+                "en": "conference-form",
+                "it": "conference-form"
+            },
+            "apiClaims": [
+                {
+                    "name": "conference-api",
+                    "type": "internal",
+                    "serviceName": "conference-ms"
+                }
+            ]
+        }
+    ],
+    "svc": [
+        "keycloak"
+    ],
+    "name": "20220825-jh-v5",
+    "version": "0.0.1",
+    "description": "20220825-jh-v5 description",
+    "type": "bundle"
 }
