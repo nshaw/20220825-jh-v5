@@ -26,6 +26,7 @@
 ######################
 
 /svc/keycloak/keycloak-db/*
+/svc/keycloak-db/
 
 ######################
 # Files to keep
