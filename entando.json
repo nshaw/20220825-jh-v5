@@ -6,7 +6,44 @@
             "healthCheckPath": "/api/health"
         }
     ],
-    "microfrontends": [],
+    "microfrontends": [
+        {
+            "name": "table-widget",
+            "customElement": "table-widget",
+            "stack": "react",
+            "type": "widget",
+            "group": "free",
+            "publicFolder": "public",
+            "titles": {
+                "en": "table-widget",
+                "it": "table-widget"
+            }
+        },
+        {
+            "name": "details-widget",
+            "customElement": "details-widget",
+            "stack": "react",
+            "type": "widget",
+            "group": "free",
+            "publicFolder": "public",
+            "titles": {
+                "en": "details-widget",
+                "it": "details-widget"
+            }
+        },
+        {
+            "name": "form-widget",
+            "customElement": "form-widget",
+            "stack": "react",
+            "type": "widget",
+            "group": "free",
+            "publicFolder": "public",
+            "titles": {
+                "en": "form-widget",
+                "it": "form-widget"
+            }
+        }
+    ],
     "svc": [
         "keycloak"
     ],
