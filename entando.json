@@ -8,18 +8,6 @@
     ],
     "microfrontends": [
         {
-            "name": "table-widget",
-            "customElement": "table-widget",
-            "stack": "react",
-            "type": "widget",
-            "group": "free",
-            "publicFolder": "public",
-            "titles": {
-                "en": "table-widget",
-                "it": "table-widget"
-            }
-        },
-        {
             "name": "details-widget",
             "customElement": "details-widget",
             "stack": "react",
@@ -41,6 +29,18 @@
             "titles": {
                 "en": "form-widget",
                 "it": "form-widget"
+            }
+        },
+        {
+            "name": "table-mfe",
+            "customElement": "table-mfe",
+            "stack": "react",
+            "type": "widget",
+            "group": "free",
+            "publicFolder": "public",
+            "titles": {
+                "en": "table-mfe",
+                "it": "table-mfe"
             }
         }
     ],
