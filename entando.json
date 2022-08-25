@@ -1,7 +1,15 @@
 {
-    "microservices": [],
+    "microservices": [
+        {
+            "name": "conference-ms",
+            "stack": "spring-boot",
+            "healthCheckPath": "/api/health"
+        }
+    ],
     "microfrontends": [],
-    "svc": [],
+    "svc": [
+        "keycloak"
+    ],
     "name": "20220825-jh-v5",
     "version": "0.0.1",
     "description": "20220825-jh-v5 description",
