@@ -45,6 +45,25 @@
                     "serviceName": "conference-ms"
                 }
             ]
+        },
+        {
+            "name": "conference-details",
+            "customElement": "conference-details",
+            "stack": "react",
+            "type": "widget",
+            "group": "free",
+            "publicFolder": "public",
+            "titles": {
+                "en": "Conference Details MFE",
+                "it": "Conference Details MFE"
+            },
+            "apiClaims": [
+                {
+                    "name": "conference-api",
+                    "type": "internal",
+                    "serviceName": "conference-ms"
+                }
+            ]
         }
     ],
     "svc": [
