@@ -18,7 +18,7 @@ Cypress.Commands.add('getOauth2Data', () => {
 Cypress.Commands.add('keycloackLogin', (oauth2Data, user) => {
   Cypress.log({ name: 'Login' });
 
-  cy.fixture(`users/${user}`).then((userData) => {
+  cy.fixture(`users/${user}`).then(userData => {
     cy.request({
       url: `${oauth2Data.realmPath}/protocol/openid-connect/auth`,
       followRedirect: false,
@@ -38,7 +38,7 @@ Cypress.Commands.add('keycloackLogin', (oauth2Data, user) => {
   });
 });
 
-Cypress.Commands.add('keycloackLogout', (oauth2Data) => {
+Cypress.Commands.add('keycloackLogout', oauth2Data => {
   return cy.request({
     url: `${oauth2Data.realmPath}/protocol/openid-connect/logout`,
   });
@@ -47,7 +47,7 @@ Cypress.Commands.add('keycloackLogout', (oauth2Data) => {
 Cypress.Commands.add('clearCache', () => {
   cy.clearCookies();
   cy.clearLocalStorage();
-  cy.window().then((win) => {
+  cy.window().then(win => {
     win.sessionStorage.clear();
   });
 });
