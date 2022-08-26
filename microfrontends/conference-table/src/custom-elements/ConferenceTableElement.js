@@ -193,4 +193,4 @@ class ConferenceTableElement extends HTMLElement {
   }
 }
 
-customElements.define('table-mfe', ConferenceTableElement);
+customElements.define('conference-table', ConferenceTableElement);

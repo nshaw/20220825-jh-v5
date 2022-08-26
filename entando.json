@@ -9,8 +9,8 @@
     ],
     "microfrontends": [
         {
-            "name": "table-mfe",
-            "customElement": "table-mfe",
+            "name": "conference-table",
+            "customElement": "conference-table",
             "stack": "react",
             "type": "widget",
             "group": "free",
