@@ -2,6 +2,7 @@
     "microservices": [
         {
             "name": "conference-ms",
+            "dbms": "postgresql",
             "stack": "spring-boot",
             "healthCheckPath": "/management/health"
         }
@@ -15,8 +16,8 @@
             "group": "free",
             "publicFolder": "public",
             "titles": {
-                "en": "table-mfe",
-                "it": "table-mfe"
+                "en": "Conference Table MFE",
+                "it": "Conference Table MFE"
             },
             "apiClaims": [
                 {
@@ -34,8 +35,8 @@
             "group": "free",
             "publicFolder": "public",
             "titles": {
-                "en": "conference-form",
-                "it": "conference-form"
+                "en": "Conference Form MFE",
+                "it": "Conference Form MFE"
             },
             "apiClaims": [
                 {
@@ -50,7 +51,7 @@
         "keycloak"
     ],
     "name": "20220825-jh-v5",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "20220825-jh-v5 description",
     "type": "bundle"
 }
