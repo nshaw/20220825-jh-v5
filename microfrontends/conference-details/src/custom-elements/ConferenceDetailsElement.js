@@ -32,7 +32,7 @@ const ATTRIBUTES = {
   hidden: 'hidden',
   locale: 'locale',
   disableDefaultEventHandler: 'disable-default-event-handler', // custom element attribute names MUST be written in kebab-case
-  serviceUrl: 'service-url',
+  config: 'config',
 };
 
 class ConferenceDetailsElement extends HTMLElement {
@@ -119,7 +119,7 @@ class ConferenceDetailsElement extends HTMLElement {
   }
 
   defaultWidgetEventHandler() {
-    return (evt) => {
+    return evt => {
       const { tableSelect } = INPUT_EVENT_TYPES;
       const { id } = ATTRIBUTES;
       switch (evt.type) {
@@ -157,7 +157,8 @@ class ConferenceDetailsElement extends HTMLElement {
   }
 
   render() {
-    const serviceUrl = this.getAttribute(ATTRIBUTES.serviceUrl) || '';
+    const attributeConfig = this.getAttribute(ATTRIBUTES.config) || '';
+    const config = attributeConfig && JSON.parse(attributeConfig);
 
     const hidden = this.getAttribute(ATTRIBUTES.hidden) === 'true';
     if (hidden) {
@@ -174,7 +175,7 @@ class ConferenceDetailsElement extends HTMLElement {
       <KeycloakContext.Provider value={this.keycloak}>
         <StylesProvider jss={this.jss}>
           <ThemeProvider theme={this.muiTheme}>
-            <ConferenceDetailsContainer id={id} onError={this.onError} serviceUrl={serviceUrl} />
+            <ConferenceDetailsContainer id={id} onError={this.onError} config={config} />
           </ThemeProvider>
         </StylesProvider>
       </KeycloakContext.Provider>,

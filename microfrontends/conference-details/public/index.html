@@ -16,7 +16,7 @@
     <title>Conference details</title>
     <script src="%REACT_APP_KEYCLOAK_URL%/js/keycloak.js"></script>
     <script>
-      const onLoad = (function () {
+      const onLoad = (function() {
         function createKcDispatcher(payload) {
           return () => window.dispatchEvent(new CustomEvent('keycloak', { detail: payload }));
         }
@@ -56,7 +56,19 @@
   </head>
   <body onLoad="onLoad();">
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <conference-details service-url="%REACT_APP_SERVICE_URL%" id="1" />
+    <conference-details id="1" />
+    <script>
+      function injectConfigIntoMfe() {
+        fetch('%PUBLIC_URL%/mfe-config.json').then(async response => {
+          const config = await response.text();
+          const anotherMfeEl = document.getElementsByTagName('conference-details')[0];
+          anotherMfeEl.setAttribute('config', config);
+        });
+      }
+
+      injectConfigIntoMfe();
+    </script>
+
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.

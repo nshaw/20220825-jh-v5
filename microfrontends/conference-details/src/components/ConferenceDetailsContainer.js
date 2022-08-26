@@ -49,8 +49,13 @@ class ConferenceDetailsContainer extends React.Component {
   }
 
   async fetchData() {
-    const { keycloak, id, serviceUrl } = this.props;
+    const { keycloak, id, config } = this.props;
     const authenticated = keycloak.initialized && keycloak.authenticated;
+    const serviceUrl =
+      config &&
+      config.systemParams &&
+      config.systemParams.api &&
+      config.systemParams.api['conference-api'].url;
 
     if (authenticated && id) {
       try {
@@ -106,12 +111,12 @@ ConferenceDetailsContainer.propTypes = {
   onError: PropTypes.func,
   t: PropTypes.func.isRequired,
   keycloak: keycloakType.isRequired,
-  serviceUrl: PropTypes.string,
+  config: PropTypes.string,
 };
 
 ConferenceDetailsContainer.defaultProps = {
   onError: () => {},
-  serviceUrl: '',
+  config: '',
 };
 
 export default withKeycloak(withTranslation()(ConferenceDetailsContainer));
